@@ -1,0 +1,49 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <h2>Login as admin</h2>
+
+<!--  <div class="form-control">
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email">
+    <div *ngIf="form.get('email').touched && form.get('email').invalid" class="validation">
+      <small *ngIf="form.get('email').errors.required">Enter Email</small>
+      <small *ngIf="form.get('email').errors.email">Enter valid Email</small>
+    </div>
+  </div>-->
+
+  <mat-form-field class="form-control1-full-width">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" placeholder="Ex. pat@example.com">
+<!--    <mat-hint>Errors appear instantly!</mat-hint>-->
+    <div *ngIf="form.get('email').touched && form.get('email').invalid" class="validation">
+      <mat-error *ngIf="form.get('email').errors.required">Enter Email</mat-error>
+      <mat-error *ngIf="form.get('email').errors.email">Enter valid Email</mat-error>
+    </div>
+  </mat-form-field>
+
+<!--  <div class="form-control">
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password">
+    <div *ngIf="form.get('password').touched && form.get('password').invalid" class="validation">
+      <small *ngIf="form.get('password').errors.required">Enter Password</small>
+      <small *ngIf="form.get('password').errors.minLength">
+        Password must be at least {{form.get('password').errors.minlength.requiredLength}} characters.
+        Now he {{form.get('password').errors.minlength.actualLength}}
+      </small>
+    </div>
+  </div>-->
+
+  <mat-form-field class="form-control1-full-width">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password">
+    <div *ngIf="form.get('password').touched && form.get('password').invalid" class="validation">
+      <mat-error *ngIf="form.get('password').errors.required">Enter Password</mat-error>
+      <mat-error *ngIf="form.get('password').errors.minLength">Password must be at least {{form.get('password').errors.minlength.requiredLength}} characters.
+        Now he {{form.get('password').errors.minlength.actualLength}}</mat-error>
+    </div>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid || submitted">Login</button>
+
+</form>
+

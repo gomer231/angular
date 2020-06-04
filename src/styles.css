@@ -1,0 +1,57 @@
+.wrapper {
+    width: 480px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 20px;
+    text-align: center;
+}
+
+fieldset {
+    border-radius: 4px;
+}
+
+.form-review {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.form-review__row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-review__cell {
+    width: 47%;
+    flex-basis: 47%;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 3px 5px;
+}
+
+input[type="range"] {
+    vertical-align: middle;
+}
+
+.range-num {
+    vertical-align: middle;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+}

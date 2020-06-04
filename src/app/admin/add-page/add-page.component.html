@@ -1,0 +1,47 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <h2 class="text-center">Add product</h2>
+
+  <mat-form-field class="form-control1-full-width">
+    <mat-label>Type</mat-label>
+    <mat-select formControlName="type">
+      <mat-option value="Phone">Phone</mat-option>
+      <mat-option value="Tablet">Tablet</mat-option>
+      <mat-option value="Laptop">Laptop</mat-option>
+    </mat-select>
+      <div *ngIf="form.get('type').touched && form.get('type').invalid" class="validation">
+        <mat-error *ngIf="form.get('type').errors.required">Chose product type</mat-error>
+      </div>
+  </mat-form-field>
+
+  <mat-form-field class="form-control1-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="title">
+    <div *ngIf="form.get('title').touched && form.get('title').invalid" class="validation">
+      <mat-error *ngIf="form.get('title').errors.required">Enter product name</mat-error>
+    </div>
+  </mat-form-field>
+
+  <div class="form-control">
+    <label>Photo</label>
+    <quill-editor formControlName="photo"></quill-editor>
+  </div>
+
+  <div class="form-control">
+    <label>Information:</label>
+    <quill-editor formControlName="info"></quill-editor>
+  </div>
+
+  <mat-form-field class="form-control1-full-width">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price">
+    <div *ngIf="form.get('price').touched && form.get('price').invalid" class="validation">
+      <mat-error *ngIf="form.get('price').errors.required">Enter product price</mat-error>
+    </div>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid">Login</button>
+
+</form>
+
+
