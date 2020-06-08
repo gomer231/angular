@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from '../../shared/product.service';
 import {Router} from '@angular/router';
+import {Product} from '../../shared/interfaces';
 
 @Component({
   selector: 'app-add-page',
@@ -28,14 +29,14 @@ export class AddPageComponent implements OnInit {
     });
   }
 
-  submit() {
+  submit(): boolean {
     if (this.form.invalid) {
       return;
     }
 
     this.submitted = true;
 
-    const product = {
+    const product: Product = {
       type: this.form.value.type,
       title: this.form.value.title,
       photo: this.form.value.photo,
