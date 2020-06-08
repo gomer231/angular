@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductService } from '../../shared/product.service';
 import { Subscription } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   products = [];
   pSub: Subscription;
@@ -24,7 +24,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:use-lifecycle-interface
   ngOnDestroy() {
     if (this.pSub) {
       this.pSub.unsubscribe();

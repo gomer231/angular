@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { pipe } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -11,8 +10,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login( User ) {
-    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, User)
+  login(user) {
+    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
     .pipe(
       tap(this.setToken)
     );
@@ -28,21 +27,21 @@ export class AuthService {
     }
   }
 
-  get token() {
+  get token(): string {
     const expDate = new Date(localStorage.getItem('fb-token-exp'));
-    // tslint:disable-next-line:new-parens
-    if ( new Date > expDate){
+    const now = new Date();
+    if (now > expDate){
       this.logout();
       return null;
     }
     return localStorage.getItem('fb-token');
   }
 
-  logout() {
+  logout(): void {
     this.setToken(null);
   }
 
-  isAuthenicated() {
+  isAuthenicated(): boolean {
     return !!this.token;
   }
 }

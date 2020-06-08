@@ -37,10 +37,8 @@ export class LoginPageComponent implements OnInit {
     };
 
     this.auth.login(user).subscribe( res => {
-      // tslint:disable-next-line:no-unused-expression
-      this.form.reset;
+      this.form.reset();
       this.router.navigate(['/admin', 'dashboard']);
-      console.log(res);
       this.submitted = false;
     }, () => {
       this.submitted = false;
