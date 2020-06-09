@@ -13,7 +13,8 @@ import { AuthGuard } from '../shared/auth.guard';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { QuillModule } from 'ngx-quill';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MatSelectModule} from '@angular/material/select';
     AddPageComponent,
     DashboardComponent,
     EditPageComponent,
-    OrdersPageComponent
+    OrdersPageComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,

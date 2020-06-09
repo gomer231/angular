@@ -16,29 +16,30 @@ import {AuthInterseptor} from './shared/auth.interseptor';
 import { ProductComponent } from './product/product.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainLayoutComponent,
-    MainPageComponent,
-    ProductPageComponent,
-    ProductCartPageComponent,
-    ProductComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    QuillModule.forRoot()
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      multi: true,
-      useClass: AuthInterseptor
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MainLayoutComponent,
+        MainPageComponent,
+        ProductPageComponent,
+        ProductCartPageComponent,
+        ProductComponent
+    ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        QuillModule.forRoot()
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            multi: true,
+            useClass: AuthInterseptor
+        }
+    ],
+    exports: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
