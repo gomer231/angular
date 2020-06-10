@@ -1,1 +1,61 @@
-<router-outlet></router-outlet>
+<div class="container" *ngIf="cartProducts.length > 0; else empty">
+  <h2 class="text-center">Your order:</h2>
+
+  <table>
+    <tbody>
+      <tr *ngFor="let cartProduct of cartProducts; let i = index">
+        <td>{{ cartProduct.type }}</td>
+        <td>{{ cartProduct.title }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="delete(cartProducts)">Delete</button>
+        </td>
+        <td>{{ cartProduct.price }} $</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <b class="right">Total: {{ totalPrice }} $</b>
+
+  <h2 class="text-center">Delivery:</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <mat-form-field class="form-control1-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+      <div *ngIf="form.get('name').touched && form.get('name').invalid" class="validation">
+        <mat-error *ngIf="form.get('name').errors.required">Enter your name</mat-error>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field class="form-control1-full-width">
+      <mat-label>Phone number</mat-label>
+      <input matInput formControlName="phone">
+      <div *ngIf="form.get('phone').touched && form.get('phone').invalid" class="validation">
+        <mat-error *ngIf="form.get('phone').errors.required">Enter your phone number</mat-error>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field class="form-control1-full-width">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address">
+      <div *ngIf="form.get('address').touched && form.get('address').invalid" class="validation">
+        <mat-error *ngIf="form.get('address').errors.required">Enter your phone address</mat-error>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field class="form-control1-full-width">
+      <mat-label>Payment method:</mat-label>
+      <mat-select formControlName="payment">
+        <mat-option value="Cash">Cash</mat-option>
+        <mat-option value="Card">Card</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid || submitted">Add</button>
+
+  </form>
+</div>
+<ng-template #empty>
+  <h2 class="text-center">Cart is empty, select product</h2>
+</ng-template>
