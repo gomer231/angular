@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ProductService} from '../../shared/product.service';
-import {Router} from '@angular/router';
-import {Product} from '../../shared/interfaces';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProductService } from '../../shared/product.service';
+import { Router } from '@angular/router';
+import { Product } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-add-page',

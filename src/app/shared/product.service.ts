@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
+  type = 'Phone';
+  cartProducts: Product [] = [];
+
   constructor(private http: HttpClient) { }
 
   create(product): Observable<Product> {
@@ -50,7 +53,16 @@ export class ProductService {
     return this.http.delete<null>(`${environment.fbDbUrl}/products/${id}.json`);
   }
 
+  // tslint:disable-next-line:typedef
   update(product: Product) {
     return this.http.patch(`${environment.fbDbUrl}/products/${product.id}.json`, product);
+  }
+
+  setType(type): void {
+    this.type = type;
+  }
+
+  addProduct(product): void {
+    this.cartProducts.push(product);
   }
 }

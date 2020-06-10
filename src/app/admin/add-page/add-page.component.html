@@ -17,7 +17,7 @@
   <mat-form-field class="form-control1-full-width">
     <mat-label>Name</mat-label>
     <input matInput formControlName="title">
-    <div *ngIf="form.get('title').touched && form.get('title').invalid || submitted" class="validation">
+    <div *ngIf="form.get('title').touched && form.get('title').invalid" class="validation">
       <mat-error *ngIf="form.get('title').errors.required">Enter product name</mat-error>
     </div>
   </mat-form-field>
@@ -40,7 +40,7 @@
     </div>
   </mat-form-field>
 
-  <button mat-raised-button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid">Add</button>
+  <button mat-raised-button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid || submitted">Add</button>
 
 </form>
 

@@ -22,4 +22,8 @@ export class ProductPageComponent implements OnInit {
         return this.productServ.getById(params[`id`]);
       }));
   }
+
+  addProduct(product): void {
+    this.productServ.addProduct(product)
+  }
 }
